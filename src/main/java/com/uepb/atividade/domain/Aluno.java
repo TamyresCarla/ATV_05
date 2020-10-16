@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 /**
@@ -25,6 +27,10 @@ public class Aluno implements Serializable{
 	private Integer id;
 	private String nome;
 	private String curso;
+	
+	@ManyToOne
+	@JoinColumn(name="aluno_id")
+	private Aluno aluno;
 	
 	/**
 	 * Construtor passando como parâmetro o ID, nome e curso do aluno

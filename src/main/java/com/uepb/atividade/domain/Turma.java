@@ -2,10 +2,12 @@ package com.uepb.atividade.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 /**
  * Representa a turma contendo o ID, nome e o turno
  * 
@@ -23,6 +25,9 @@ public class Turma implements Serializable{
 	
 	private String nome;
 	private String turno;
+	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy="Aluno")
+	private Turma turma;
 	
 	/**
 	 * Construtor passando como parâmetro o ID, nome e turno da turma
