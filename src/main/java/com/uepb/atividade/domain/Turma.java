@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
 /**
  * Representa a turma contendo o ID, nome e o turno
  * 
@@ -15,25 +16,25 @@ import javax.persistence.OneToOne;
  *
  */
 @Entity
-public class Turma implements Serializable{
+public class Turma implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String nome;
 	private String turno;
-	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy="Aluno")
+
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "Aluno")
 	private Turma turma;
-	
+
 	/**
 	 * Construtor passando como parâmetro o ID, nome e turno da turma
 	 * 
-	 * @param id da turma
-	 * @param nome da turma
+	 * @param id    da turma
+	 * @param nome  da turma
 	 * @param curso da turma
 	 */
 	public Turma(Integer id, String nome, String turno) {
@@ -43,26 +44,50 @@ public class Turma implements Serializable{
 		this.turno = turno;
 	}
 
+	/**
+	 * @return o ID da turma
+	 */
 	public Integer getId() {
 		return id;
 	}
 
+	/**
+	 * Seta o ID da turma
+	 * 
+	 * @param id
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return o nome da turma
+	 */
 	public String getNome() {
 		return nome;
 	}
 
+	/**
+	 * Seta o nome da turma
+	 * 
+	 * @param nome
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+	/**
+	 * @return o turno da turma
+	 */
 	public String getTurno() {
 		return turno;
 	}
 
+	/**
+	 * Seta o turno da turma
+	 * 
+	 * @param turno
+	 */
 	public void setTurno(String turno) {
 		this.turno = turno;
 	}
@@ -91,7 +116,5 @@ public class Turma implements Serializable{
 			return false;
 		return true;
 	}
-	
 
-	
 }

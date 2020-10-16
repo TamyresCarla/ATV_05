@@ -2,7 +2,6 @@ package com.uepb.atividade.domain;
 
 import java.io.Serializable;
 
-import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,33 +9,44 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 /**
  * Representa o aluno contendo o ID, nome e o curso
  * 
  * @author Alice, Mickaely, Tamyres
  *
  */
+/**
+ * @author tamyr
+ *
+ */
+/**
+ * @author tamyr
+ *
+ */
+/**
+ * @author tamyr
+ *
+ */
 @Entity
-public class Aluno implements Serializable{
+public class Aluno implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String curso;
-	
+
 	@ManyToOne
-	@JoinColumn(name="aluno_id")
+	@JoinColumn(name = "aluno_id")
 	private Aluno aluno;
-	
+
 	/**
 	 * Construtor passando como parâmetro o ID, nome e curso do aluno
 	 * 
-	 * @param id do aluno
-	 * @param nome do aluno
+	 * @param id    do aluno
+	 * @param nome  do aluno
 	 * @param curso do aluno
 	 */
 	public Aluno(Integer id, String nome, String curso) {
@@ -46,26 +56,50 @@ public class Aluno implements Serializable{
 		this.curso = curso;
 	}
 
+	/**
+	 * @return o ID do aluno
+	 */
 	public Integer getId() {
 		return id;
 	}
 
+	/**
+	 * Seta o ID do aluno
+	 * 
+	 * @param id
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return o nome do aluno
+	 */
 	public String getNome() {
 		return nome;
 	}
 
+	/**
+	 * Seta o nome do aluno
+	 * 
+	 * @param nome
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+	/**
+	 * @return o curso do aluno
+	 */
 	public String getCurso() {
 		return curso;
 	}
 
+	/**
+	 * Seta o curso do aluno
+	 * 
+	 * @param curso
+	 */
 	public void setCurso(String curso) {
 		this.curso = curso;
 	}
@@ -94,7 +128,5 @@ public class Aluno implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
 
 }
