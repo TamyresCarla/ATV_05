@@ -29,7 +29,7 @@ public class Turma implements Serializable {
 	private String nome;
 	private String turno;
 
-	@OneToMany(mappedBy="turma", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private List<Aluno> alunos = new ArrayList<>();
 
 	/**
@@ -44,6 +44,21 @@ public class Turma implements Serializable {
 		this.id = id;
 		this.nome = nome;
 		this.turno = turno;
+	}
+
+	/**
+	 * @return a lista de alunos.
+	 */
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+	/**
+	 * Seta a lista de alunos.
+	 * 
+	 * @param alunos
+	 */
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 
 	/**

@@ -50,6 +50,26 @@ public class Aluno implements Serializable {
 		this.curso = curso;
 	}
 
+	
+	/**
+	 * @return a turma do aluno
+	 */
+	public Turma getTurma() {
+		return turma;
+	}
+
+
+	/**
+	 * Seta a turma do aluno
+	 * 
+	 * @param turma
+	 */
+	public void setTurma(Turma turma) {
+		this.turma = turma;
+	}
+
+
+
 	/**
 	 * @return o ID do aluno
 	 */
