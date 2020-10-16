@@ -2,12 +2,14 @@ package com.uepb.atividade.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * Representa o aluno contendo o ID, nome e o curso
@@ -16,17 +18,10 @@ import javax.persistence.ManyToOne;
  *
  */
 /**
- * @author tamyr
+ * @author Alice, Mickaely, Tamyres
  *
  */
-/**
- * @author tamyr
- *
- */
-/**
- * @author tamyr
- *
- */
+
 @Entity
 public class Aluno implements Serializable {
 
@@ -38,9 +33,8 @@ public class Aluno implements Serializable {
 	private String nome;
 	private String curso;
 
-	@ManyToOne
-	@JoinColumn(name = "aluno_id")
-	private Aluno aluno;
+	@OneToOne
+	private Turma turma;
 
 	/**
 	 * Construtor passando como parâmetro o ID, nome e curso do aluno
