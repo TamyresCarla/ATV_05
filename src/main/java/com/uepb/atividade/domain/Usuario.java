@@ -1,75 +1,59 @@
 package com.uepb.atividade.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
- * Representa a turma contendo o ID, nome e o turno
+ * Representa o usuario contendo o ID e o nome 
  * 
  * @author Alice, Mickaely, Tamyres
  *
  */
+
 @Entity
-public class Turma implements Serializable {
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
 	private String nome;
-	private String turno;
 
-	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
-	private List<Aluno> alunos = new ArrayList<>();
+
+	
+	public Usuario() {
+	}
 
 	/**
-	 * Construtor passando como parâmetro o ID, nome e turno da turma
+	 * Construtor passando como parâmetro o ID, nome e curso do usuario
 	 * 
-	 * @param id    da turma
-	 * @param nome  da turma
-	 * @param curso da turma
+	 * @param id    do usuario
+	 * @param nome  do usuario
 	 */
-	public Turma(Integer id, String nome, String turno) {
+	public Usuario(Integer id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.turno = turno;
 	}
 
 	/**
-	 * @return a lista de alunos.
-	 */
-	public List<Aluno> getAlunos() {
-		return alunos;
-	}
-	/**
-	 * Seta a lista de alunos.
-	 * 
-	 * @param alunos
-	 */
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
-	}
-
-	/**
-	 * @return o ID da turma
+	 * @return o ID do usuario
 	 */
 	public Integer getId() {
 		return id;
 	}
 
 	/**
-	 * Seta o ID da turma
+	 * Seta o ID do usuario
 	 * 
 	 * @param id
 	 */
@@ -78,14 +62,14 @@ public class Turma implements Serializable {
 	}
 
 	/**
-	 * @return o nome da turma
+	 * @return o nome do usuario
 	 */
 	public String getNome() {
 		return nome;
 	}
 
 	/**
-	 * Seta o nome da turma
+	 * Seta o nome do usuario
 	 * 
 	 * @param nome
 	 */
@@ -93,21 +77,6 @@ public class Turma implements Serializable {
 		this.nome = nome;
 	}
 
-	/**
-	 * @return o turno da turma
-	 */
-	public String getTurno() {
-		return turno;
-	}
-
-	/**
-	 * Seta o turno da turma
-	 * 
-	 * @param turno
-	 */
-	public void setTurno(String turno) {
-		this.turno = turno;
-	}
 
 	@Override
 	public int hashCode() {
@@ -125,7 +94,7 @@ public class Turma implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Turma other = (Turma) obj;
+		Usuario other = (Usuario) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
