@@ -1,24 +1,28 @@
 package com.uepb.atividade.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
- * Representa o usuario contendo o ID e o nome 
+ * Representa o usuario contendo o ID e o nome
  * 
  * @author Alice, Mickaely, Tamyres
  *
  */
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -28,16 +32,18 @@ public class Usuario implements Serializable {
 	private Integer id;
 	private String nome;
 
+	@ManyToMany
+	@JoinTable(name = "USUARIO_PROJETO", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "projeto_id"))
+	private List<Projeto> projetos = new ArrayList<>();
 
-	
 	public Usuario() {
 	}
 
 	/**
 	 * Construtor passando como parâmetro o ID, nome e curso do usuario
 	 * 
-	 * @param id    do usuario
-	 * @param nome  do usuario
+	 * @param id   do usuario
+	 * @param nome do usuario
 	 */
 	public Usuario(Integer id, String nome) {
 		super();
@@ -76,7 +82,6 @@ public class Usuario implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	@Override
 	public int hashCode() {

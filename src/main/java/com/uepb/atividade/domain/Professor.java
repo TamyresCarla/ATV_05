@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 /**
@@ -26,6 +27,8 @@ public class Professor extends Usuario{
 	private String areaAtuacao;
 	private String formacao;
 
+	@OneToOne(cascade=CascadeType.ALL, mappedBy="professor")
+	private Projeto projeto;
 
 	/**
 	 * Construtor passando como parâmetro o ID, nome, area de atuacai e formacao do professor

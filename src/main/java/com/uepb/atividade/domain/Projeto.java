@@ -1,6 +1,8 @@
 package com.uepb.atividade.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 /**
@@ -28,6 +32,13 @@ public class Projeto implements Serializable {
 	private String nome;
 	private String descricao;
 
+	@OneToOne
+	@JoinColumn(name="professor_id")
+	@MapsId
+	private Professor professor;
+	
+	@ManyToMany(mappedBy="projetos")
+	private List<Usuario> usuarios = new ArrayList<>();
 	/**
 	 * Construtor passando como parâmetro o ID, nome e descricao do projeto
 	 * 
